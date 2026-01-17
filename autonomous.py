@@ -5,4 +5,6 @@ drone.pair()
 
 drone.takeoff()
 
+drone.land()
+
 drone.close()
