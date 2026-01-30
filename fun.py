@@ -1,3 +1,4 @@
+#This is fun.py :)
 from codrone_edu.drone import *
 
 drone = Drone()
