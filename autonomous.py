@@ -7,46 +7,35 @@ drone.pair()
 drone.takeoff()
 
 #Phase 1
+
 drone.set_drone_LED(0,0,0,100)
-drone.move_distance(0, 0, 0.9,1)
-drone.hover(5)
+drone.send_absolute_position(0, 0, 1.5, 1.37, 0, 0)
+#drone.hover(5)
 drone.set_yaw(0)
-drone.move_forward(distance=1.7, units="m", speed=1)
+drone.move_forward(distance=1.85, units="m", speed=1)
 drone.set_yaw(0)
 
 #Reading Color Mat to end Phase 1
+drone.send_absolute_position(1.85, 0, 0.6, 0.5, 0, 0)
+drone.set_yaw(0)
+drone.send_absolute_position(1.85, 0, 0.6, 0.5, 0, 0)
+
+#Get Color Mat Color
 color_data = drone.get_back_color("rgb")
 print(color_data)
-drone.set_drone_LED(*color_data)
+drone.set_drone_LED(*color_data, brightness = 255)
+
+drone.send_absolute_position(1.85, 0, 0.6, 0.5, 0, 0)
+drone.send_absolute_position(3.7, 0, 0.6, 0.5, 0, 0)
+
+#Get Color Mat Color
+color_data = drone.get_back_color("rgb")
+print(color_data)
+drone.set_drone_LED(*color_data, brightness = 255)
+
 #note, after research putting * "unpacks it"
 #so then it won't dump it in like ((r, g, b)) but instead like (r,g,b)
 #must be tested
-drone.hover(5)
-
-#Phase 2
-drone.move_distance(0, 0, ?,1)
-#will be determined later, will be tricky to get through holes,
-#due to possible errors in position of y
-drone.move_forward(distance=?, units="m", speed=1)
-drone.move_distance(0, ?, 0,1)
-drone.move_forward(distance=?, units="m", speed=1)
-drone.move_distance(0, ?, 0,1)
-drone.move_forward(distance=?, units="m", speed=1)
-
-#Reading Color Mat to end Phase 2
-color_data = drone.get_back_color("rgb")
-print(color_data)
-drone.set_drone_LED(*color_data)
-
-#Phase 3
-drone.move_distance(0, 0, ?,1)
-drone.move_forward(distance=?, units="m", speed=1)
-#have to code to align to not bump into yellow keyhole
-drone.move_distance(0, ?, 0,1)
-drone.move_distance(0, 0, ?,1)
-drone.move_distance(0, ?, 0,1)
-drone.move_forward(distance=?, units="m", speed=1)
-#have to code to align with bullseye for more points
 
 drone.land()
 
