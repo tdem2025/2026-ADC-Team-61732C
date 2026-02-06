@@ -8,8 +8,8 @@ drone.pair()
 
 drone.takeoff()
 
-#Begin by taking off, turning off LED, ascending, and going through first key hole
-drone.set_drone_LED(0,0,0,0)
+#Begin by taking off, turning off LED, ascending, and going through first key-hole
+drone.set_drone_LED(0,0,0,100)
 drone.send_absolute_position(0, 0, 1.5, 1.37, 0, 0)
 #drone.hover(5)
 drone.set_yaw(0)
